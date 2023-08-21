@@ -1,0 +1,43 @@
+Graduation project
+- Field: Digital Design
+- Title: N-BIT GENERAL PURPOSE INTEGER PROCESSOR (RISC-V).
+- Description: Implement a 32-bit multi-Cycle microarchitecture RISC V processor based on Harvard Architecture 
+on a FPGA kit(spartan-6) using Xilinx’s tool “ISE14.7”.
+- Grade: Excellent .
+- Role in GP:
+• Understanding multi-Cycle microarchitecture RISC V processor based on Harvard Architecture.
+• Control Unit RTL (Main FSM, Instruction Decoder, ALU Decoder).
+• Optimize the RTL of Control Unit for best results of power, timing & utilization.
+• Integrate and verify functionality through self-checking testbench.
+• FGPA Flow for Control Unit block & overall system.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Control Unit is optimized by using:
+
+1) Moore Machine
+an FSM whose outputs depend on only the present state. Moore machines are very useful because their output signals are synchronized with the clock.
+No matter when input signals reach the Moore Machine,its output signals will not change until the rising edge of the next clock cycle.
+This is very important to avoid setup timing violations. While in Mealy machine whose output depends on the present state as well as the present input so if it’s input signal changes sometime in the middle of a 
+clock cycle, one or more of its outputs and next state signals may change some time later might come after the setup time threshold for the next 
+rising edge.If this happens, the registers that will hold the FSM next state may receive garbage, or just incorrect inputs.
+Obviously, this amounts to a bug in our FSM. A very painful and difficult-to-find bug at that.
+Moore machine should be preferred for the designs, where glitches are not theproblem in the systems unlike Mealy machine, So Moore machine is more 
+power efficient.
+
+2) Register Outputs
+Register outputs prevent creating infinitely long combinational logic paths through the design.
+The rationale is that we want to break up long chains of combinational logic to improve the clock rate so that we can met the timing constraints for a chosen clock rate.
+This will add additional cycles of latency proportional to the number of modules that a signal must cross.
+● help in the floorplan stage.
+● avoid metastability.
+● Higher frequency.
+Rule of thumb: register all outputs of internal FPGA cores; no need to register inputs. If an output already comes from a register, such as the state register of a state machine, then there is no need to register again.
+
+3) Gray Encoding
+Minimization of the switching activity is one way to reduce the power dissipation of digital processors.One method to minimize the switching 
+signals, is to use gray state encoding for the signals rather than straight binary state encoding.
+● the advantage of Gray Code is that just one-bit changes for each step. This will come in handy in circuits that are sensitive to glitches and other errors (Minimizes glitches in Circuits).
+● Use less utilization (use less num of LUTs).
+So Gray Encoding is more power efficient.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
