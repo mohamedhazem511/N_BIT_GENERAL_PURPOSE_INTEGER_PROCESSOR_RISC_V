@@ -1,8 +1,7 @@
 Graduation project
 - Field: Digital Design
 - Title: N-BIT GENERAL PURPOSE INTEGER PROCESSOR (RISC-V).
-- Description: Implement a 32-bit multi-Cycle microarchitecture RISC V processor based on Harvard Architecture 
-on a FPGA kit(spartan-6) using Xilinx’s tool “ISE14.7”.
+- Description: Implement a 32-bit multi-Cycle microarchitecture RISC V processor based on Harvard Architecture on a FPGA kit(spartan-6) using Xilinx’s tool “ISE14.7”.
 - Grade: Excellent .
 - Role in GP:
 • Understanding multi-Cycle microarchitecture RISC V processor based on Harvard Architecture.
